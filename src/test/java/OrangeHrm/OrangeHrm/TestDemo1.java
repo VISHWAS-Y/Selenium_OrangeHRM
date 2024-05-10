@@ -2,17 +2,34 @@ package OrangeHrm.OrangeHrm;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestDemo1 {
    
+	@Parameters("Browser")
 	@Test
-	public void Test1() throws InterruptedException
+	public void Test1(String browsername) throws InterruptedException
 	{
-		WebDriverManager.chromedriver().setup();
-		WebDriver driver= new ChromeDriver();
+		WebDriver driver=null;
+		
+		if(browsername.contains("Chrome"))
+		{
+			WebDriverManager.chromedriver().setup();
+			 driver= new ChromeDriver();
+		}
+		
+		if(browsername.contains("Edge"))
+		{
+			WebDriverManager.edgedriver().setup();
+			 driver= new EdgeDriver();
+		}
+		
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		driver.manage().window().maximize();
 		
