@@ -12,6 +12,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestDemo1 {
    
+	
 	@Parameters("Browser")
 	@Test
 	public void Test1(String browsername) throws InterruptedException
@@ -27,7 +28,7 @@ public class TestDemo1 {
 		if(browsername.contains("Edge"))
 		{
 			WebDriverManager.edgedriver().setup();
-			 driver= new EdgeDriver();
+			 driver= new EdgeDriver ();
 		}
 		
 		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
@@ -40,6 +41,6 @@ public class TestDemo1 {
 		Thread.sleep(2000);
 		driver.quit();
 	}
-	
+
 	
 }
